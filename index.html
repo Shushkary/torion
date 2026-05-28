@@ -1,0 +1,1382 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#F2EBDF">
+<title>Torion · Первый чистый кето-электролит России</title>
+<meta name="description" content="Torion — кето-электролитный концентрат в стик-формате. Натрий 1000 · Калий 400 · Магний-малат 80. Без подсластителей. Без ароматизаторов. Декларация ЕАЭС.">
+
+<meta property="og:title" content="Torion · Первый чистый кето-электролит России">
+<meta property="og:description" content="Натрий 1000 · Калий 400 · Магний-малат 80 — в одном стике. Без подсластителей, без ароматизаторов.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://torion.su">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-140 -160 280 320'%3E%3Crect x='-140' y='-160' width='280' height='320' fill='%23F2EBDF'/%3E%3Cg fill='none' stroke='%23B47A45' stroke-width='9'%3E%3Cpolygon points='0,-45 38.97,-67.5 38.97,-112.5 0,-135 -38.97,-112.5 -38.97,-67.5'/%3E%3Cpolygon points='77.94,0 116.91,-22.5 116.91,-67.5 77.94,-90 38.97,-67.5 38.97,-22.5'/%3E%3Cpolygon points='77.94,90 116.91,67.5 116.91,22.5 77.94,0 38.97,22.5 38.97,67.5'/%3E%3Cpolygon points='0,135 38.97,112.5 38.97,67.5 0,45 -38.97,67.5 -38.97,112.5'/%3E%3Cpolygon points='-77.94,90 -38.97,67.5 -38.97,22.5 -77.94,0 -116.91,22.5 -116.91,67.5'/%3E%3Cpolygon points='-77.94,0 -38.97,-22.5 -38.97,-67.5 -77.94,-90 -116.91,-67.5 -116.91,-22.5'/%3E%3C/g%3E%3C/svg%3E">
+
+<style>
+/* ============================================================
+   TORION · Editorial Premium · v1.0
+   Palette: cream / copper / deep brown
+   Type: Georgia (serif display) + system sans (body, light)
+   Mobile-first; breakpoint 768px
+   ============================================================ */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+:root {
+  --cream: #F2EBDF;
+  --cream-deep: #E8DFCE;
+  --copper: #B47A45;
+  --copper-deep: #8C5524;
+  --copper-light: #D9A878;
+  --brown: #3A2C1E;
+  --brown-soft: #7A6650;
+  --hairline: rgba(58, 44, 30, 0.12);
+  --hairline-strong: rgba(58, 44, 30, 0.22);
+
+  --serif: Georgia, 'Times New Roman', Times, serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 7rem;
+  --space-2xl: 10rem;
+}
+
+body {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--brown);
+  background: var(--cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--copper); color: var(--cream); }
+
+/* Subtle paper grain via SVG noise */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.227 0 0 0 0 0.173 0 0 0 0 0.118 0 0 0 0.06 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  opacity: 0.55;
+  mix-blend-mode: multiply;
+  z-index: 1;
+}
+main, nav, footer { position: relative; z-index: 2; }
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  color: var(--brown);
+  letter-spacing: -0.01em;
+}
+
+.eyebrow {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--brown-soft);
+}
+
+.chapter-mark {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--copper-deep);
+  letter-spacing: 0.08em;
+}
+
+a { color: var(--brown); text-decoration: none; transition: color 0.25s; }
+a:hover { color: var(--copper-deep); }
+
+p { margin-bottom: 1.1em; }
+p:last-child { margin-bottom: 0; }
+
+/* ---------- Layout primitives ---------- */
+.wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+.wrap-narrow {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.divider {
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--copper);
+  margin: var(--space-md) auto;
+}
+.divider-left { margin-left: 0; }
+
+section { padding: var(--space-xl) 0; }
+section.tight { padding: var(--space-lg) 0; }
+
+/* ---------- Navigation ---------- */
+nav {
+  position: sticky; top: 0;
+  background: rgba(242, 235, 223, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--hairline);
+  z-index: 100;
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.9rem 1.5rem;
+  max-width: 1080px; margin: 0 auto;
+}
+.nav-brand { display: flex; align-items: center; gap: 0.7rem; }
+.nav-brand svg { width: 26px; height: 26px; }
+.nav-brand .word {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--brown);
+  letter-spacing: 0.01em;
+}
+.nav-cta {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--brown);
+  border-bottom: 1px solid var(--copper);
+  padding-bottom: 3px;
+}
+.nav-cta:hover { color: var(--copper-deep); }
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 88vh;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center;
+  padding: var(--space-xl) 1.5rem var(--space-lg);
+  position: relative;
+}
+.hero-mark { width: 110px; height: 110px; margin-bottom: 2.4rem; opacity: 0; animation: fadeUp 1s ease-out 0.1s forwards; }
+.hero-wordmark {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(56px, 13vw, 130px);
+  line-height: 0.95;
+  color: var(--brown);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.4rem;
+  opacity: 0; animation: fadeUp 1s ease-out 0.3s forwards;
+}
+.hero-caption {
+  font-size: 10px;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+  color: var(--brown-soft);
+  margin-bottom: 2.4rem;
+  opacity: 0; animation: fadeUp 1s ease-out 0.5s forwards;
+}
+.hero-proposition {
+  font-family: var(--serif);
+  font-size: clamp(20px, 3.2vw, 30px);
+  line-height: 1.35;
+  color: var(--brown);
+  max-width: 580px;
+  margin: 0 auto 2rem;
+  opacity: 0; animation: fadeUp 1s ease-out 0.7s forwards;
+}
+.hero-formula {
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--copper-deep);
+  text-transform: uppercase;
+  opacity: 0; animation: fadeUp 1s ease-out 0.9s forwards;
+}
+.hero-formula span { color: var(--brown-soft); margin: 0 0.4rem; }
+
+.scroll-cue {
+  position: absolute;
+  bottom: 2rem; left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 11px;
+  color: var(--brown-soft);
+  letter-spacing: 0.1em;
+  opacity: 0; animation: fadeUp 1s ease-out 1.4s forwards;
+}
+.scroll-cue::after {
+  content: ''; display: block;
+  width: 1px; height: 28px;
+  background: var(--copper);
+  margin: 0.6rem auto 0;
+  animation: cuePulse 2.4s ease-in-out infinite;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(14px); }
+}
+@keyframes cuePulse {
+  0%, 100% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  50% { transform: scaleY(0.4); opacity: 0.4; }
+}
+
+/* ---------- Chapter section base ---------- */
+.chapter-head {
+  text-align: center;
+  margin-bottom: var(--space-lg);
+}
+.chapter-head .chapter-mark { display: block; margin-bottom: 0.8rem; }
+.chapter-head h2 {
+  font-size: clamp(28px, 5vw, 44px);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.chapter-head .lede {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(16px, 2.2vw, 19px);
+  color: var(--brown-soft);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ---------- I. Problem ---------- */
+.problem {
+  background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+.problem-body {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2.4vw, 21px);
+  line-height: 1.7;
+  color: var(--brown);
+}
+.problem-body p { margin-bottom: 1.5em; }
+.problem-body em { color: var(--copper-deep); font-style: italic; }
+
+/* ---------- II. Solution / Three Minerals ---------- */
+.minerals {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+.mineral {
+  text-align: center;
+  padding: 2.4rem 1.4rem;
+  border-top: 1px solid var(--copper);
+  position: relative;
+}
+.mineral-symbol {
+  font-family: var(--serif);
+  font-size: 56px;
+  color: var(--copper-deep);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+  font-style: italic;
+}
+.mineral-name {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--brown-soft);
+  margin-bottom: 1.4rem;
+}
+.mineral-dose {
+  font-family: var(--serif);
+  font-size: 28px;
+  color: var(--brown);
+  margin-bottom: 0.3rem;
+}
+.mineral-dose .unit { font-size: 13px; color: var(--brown-soft); font-style: italic; letter-spacing: 0.05em; margin-left: 0.2rem; }
+.mineral-rusp {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--copper-deep);
+  margin-bottom: 1.4rem;
+}
+.mineral-rationale {
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--brown);
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* ---------- III. Composition table ---------- */
+.composition-frame {
+  border: 1px solid var(--hairline-strong);
+  background: rgba(255, 252, 245, 0.5);
+  padding: 2.4rem 1.6rem;
+}
+.composition-title {
+  text-align: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--brown-soft);
+  margin-bottom: 0.4rem;
+}
+.composition-subtitle {
+  text-align: center;
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--copper-deep);
+  margin-bottom: 2rem;
+}
+.composition-list {
+  list-style: none;
+}
+.composition-list li {
+  display: flex; justify-content: space-between; align-items: baseline;
+  padding: 1rem 0;
+  border-bottom: 1px dotted var(--hairline-strong);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.composition-list li:last-child { border-bottom: none; }
+.composition-list .ing-name {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--brown);
+  flex: 1 1 60%;
+}
+.composition-list .ing-name em {
+  display: block;
+  font-size: 13px;
+  color: var(--brown-soft);
+  margin-top: 0.2rem;
+  font-style: italic;
+}
+.composition-list .ing-amount {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: var(--copper-deep);
+  white-space: nowrap;
+  text-align: right;
+}
+
+.composition-negatives {
+  margin-top: 2.2rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid var(--hairline-strong);
+  text-align: center;
+}
+.composition-negatives .label {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--brown-soft);
+  margin-bottom: 1rem;
+}
+.composition-negatives .items {
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--brown);
+  line-height: 1.9;
+}
+.composition-negatives .items span {
+  display: inline-block;
+  margin: 0 0.7rem;
+  position: relative;
+}
+.composition-negatives .items span::after {
+  content: '×';
+  position: absolute;
+  left: -1.1rem; top: 50%;
+  transform: translateY(-50%);
+  color: var(--copper);
+  font-size: 14px;
+  font-style: normal;
+}
+
+/* ---------- IV. Comparison ---------- */
+.compare {
+  margin-top: var(--space-md);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.compare table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.compare th, .compare td {
+  padding: 1.1rem 0.8rem;
+  text-align: center;
+  border-bottom: 1px solid var(--hairline);
+  vertical-align: middle;
+}
+.compare th {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--brown);
+  font-style: italic;
+  border-bottom: 1px solid var(--copper);
+}
+.compare th.us {
+  color: var(--copper-deep);
+  font-style: normal;
+  letter-spacing: 0.02em;
+}
+.compare td:first-child {
+  text-align: left;
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--brown-soft);
+  font-style: italic;
+}
+.compare td.us {
+  background: rgba(180, 122, 69, 0.07);
+  color: var(--brown);
+  font-weight: 400;
+}
+.compare .check { color: var(--copper-deep); font-size: 18px; font-family: var(--serif); }
+.compare .cross { color: var(--brown-soft); opacity: 0.4; font-size: 18px; font-family: var(--serif); }
+.compare-note {
+  margin-top: 1rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--brown-soft);
+  text-align: center;
+}
+
+/* ---------- V. How to use ---------- */
+.usage {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.2rem;
+  margin-top: var(--space-md);
+}
+.usage-step {
+  text-align: center;
+  padding: 0 0.8rem;
+}
+.usage-step .num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 42px;
+  color: var(--copper);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.usage-step h4 {
+  font-size: 19px;
+  margin-bottom: 0.6rem;
+}
+.usage-step p {
+  font-size: 15px;
+  color: var(--brown-soft);
+  line-height: 1.6;
+}
+
+/* ---------- VI. Founder ---------- */
+.founder {
+  background: var(--brown);
+  color: var(--cream);
+  border-top: 1px solid var(--copper);
+  border-bottom: 1px solid var(--copper);
+}
+.founder .chapter-mark { color: var(--copper-light); }
+.founder h2 { color: var(--cream); }
+.founder .lede { color: rgba(242, 235, 223, 0.65); }
+.founder-body {
+  font-family: var(--serif);
+  font-size: clamp(17px, 2.2vw, 19px);
+  line-height: 1.75;
+  color: rgba(242, 235, 223, 0.9);
+}
+.founder-body p { margin-bottom: 1.4em; }
+.founder-body em { color: var(--copper-light); font-style: italic; }
+.founder-sign {
+  margin-top: 2.4rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--copper-light);
+  text-align: right;
+}
+.founder-body a {
+  color: var(--copper-light);
+  border-bottom: 1px solid rgba(217, 168, 120, 0.45);
+}
+.founder-body a:hover {
+  color: var(--cream);
+  border-bottom-color: var(--cream);
+}
+
+/* ---------- Offer ---------- */
+.offer {
+  background: linear-gradient(180deg, var(--cream-deep) 0%, var(--cream) 100%);
+}
+.offer-tiers {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+  margin-top: var(--space-md);
+  max-width: 920px;
+  margin-left: auto; margin-right: auto;
+}
+.tier {
+  background: var(--cream);
+  border: 1px solid var(--hairline);
+  padding: 2rem 1.6rem;
+  text-align: center;
+  position: relative;
+}
+.tier.featured {
+  border: 1px solid var(--copper);
+  box-shadow: 0 1px 20px rgba(140, 85, 36, 0.08);
+}
+.tier-tag {
+  position: absolute;
+  top: -10px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--copper);
+  color: var(--cream);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+}
+.tier-name {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--brown);
+  margin-bottom: 0.4rem;
+}
+.tier-sub {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brown-soft);
+  margin-bottom: 1.6rem;
+}
+.tier-price {
+  font-family: var(--serif);
+  font-size: 38px;
+  color: var(--brown);
+  line-height: 1;
+}
+.tier-price .currency { font-size: 22px; color: var(--copper-deep); margin-left: 0.2rem; }
+.tier-old {
+  margin-top: 0.5rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--brown-soft);
+  text-decoration: line-through;
+  text-decoration-color: var(--copper);
+}
+.tier-note {
+  margin-top: 1rem;
+  font-size: 13px;
+  color: var(--brown-soft);
+  line-height: 1.5;
+}
+
+/* ---------- Form ---------- */
+.form-section { background: var(--cream); }
+.form-card {
+  background: rgba(255, 252, 245, 0.6);
+  border: 1px solid var(--hairline-strong);
+  padding: 2.4rem 1.6rem;
+  max-width: 560px;
+  margin: var(--space-md) auto 0;
+}
+.form-row { margin-bottom: 1.4rem; }
+.form-row.two {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+  margin-bottom: 1.4rem;
+}
+label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--brown-soft);
+  margin-bottom: 0.6rem;
+}
+input, select {
+  width: 100%;
+  font-family: var(--serif);
+  font-size: 17px;
+  color: var(--brown);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--hairline-strong);
+  padding: 0.5rem 0;
+  outline: none;
+  transition: border-color 0.25s;
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+select {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path fill='none' stroke='%23B47A45' stroke-width='1.2' d='M1,1 L5,5 L9,1'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.4rem center;
+  padding-right: 1.4rem;
+}
+input:focus, select:focus { border-bottom-color: var(--copper); }
+input::placeholder { color: var(--brown-soft); opacity: 0.55; font-style: italic; }
+
+.btn {
+  display: inline-block;
+  width: 100%;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--cream);
+  background: var(--brown);
+  border: none;
+  padding: 1.15rem 2rem;
+  cursor: pointer;
+  transition: background 0.25s;
+  text-decoration: none;
+  text-align: center;
+}
+.btn:hover { background: var(--copper-deep); color: var(--cream); }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.form-legal {
+  margin-top: 1.2rem;
+  font-size: 12px;
+  font-style: italic;
+  font-family: var(--serif);
+  color: var(--brown-soft);
+  text-align: center;
+  line-height: 1.5;
+}
+.form-legal a { text-decoration: underline; text-decoration-color: var(--hairline-strong); }
+
+.form-status {
+  display: none;
+  margin-top: 1.2rem;
+  padding: 1rem;
+  font-family: var(--serif);
+  font-size: 15px;
+  text-align: center;
+  border: 1px solid;
+}
+.form-status.ok {
+  display: block;
+  color: var(--copper-deep);
+  border-color: var(--copper);
+  background: rgba(180, 122, 69, 0.06);
+}
+.form-status.err {
+  display: block;
+  color: #8C2424;
+  border-color: #8C2424;
+  background: rgba(140, 36, 36, 0.05);
+}
+
+/* ---------- FAQ ---------- */
+.faq-list {
+  margin-top: var(--space-md);
+  max-width: 720px;
+  margin-left: auto; margin-right: auto;
+}
+.faq-item {
+  border-bottom: 1px solid var(--hairline);
+}
+.faq-item:first-child { border-top: 1px solid var(--hairline); }
+.faq-q {
+  cursor: pointer;
+  padding: 1.4rem 0;
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--brown);
+  list-style: none;
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 1rem;
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q::after {
+  content: '+';
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--copper);
+  font-weight: 300;
+  transition: transform 0.25s;
+}
+.faq-item[open] .faq-q::after { content: '−'; }
+.faq-a {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--brown-soft);
+  padding: 0 0 1.4rem;
+  max-width: 90%;
+}
+
+
+/* ---------- Legal CTA cards ---------- */
+.legal-cta {
+  background: linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+.legal-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 820px;
+  margin: var(--space-md) auto 0;
+}
+.legal-card {
+  display: block;
+  background: rgba(255,252,245,0.62);
+  border: 1px solid var(--hairline-strong);
+  padding: 1.6rem;
+  transition: transform 0.25s, border-color 0.25s, background 0.25s;
+}
+.legal-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--copper);
+  background: rgba(255,252,245,0.86);
+}
+.legal-card .legal-title {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--brown);
+  margin-bottom: 0.45rem;
+}
+.legal-card .legal-text {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--brown-soft);
+}
+.foot-links a.legal-pill {
+  display: inline-block;
+  border: 1px solid rgba(242,235,223,0.26);
+  padding: 0.45rem 0.75rem;
+  margin: 0 0 0.45rem 0;
+  border-radius: 999px;
+}
+.foot-links a.legal-pill:hover {
+  border-color: var(--copper-light);
+}
+@media (min-width: 768px) {
+  .legal-cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background: var(--brown);
+  color: rgba(242, 235, 223, 0.65);
+  padding: var(--space-lg) 0 var(--space-md);
+  font-size: 13px;
+  line-height: 1.7;
+  border-top: 1px solid var(--copper);
+}
+.foot-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+.foot-brand { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.6rem; }
+.foot-brand .word {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--cream);
+}
+.foot-brand svg { width: 28px; height: 28px; }
+.foot-h {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--copper-light);
+  margin-bottom: 0.8rem;
+}
+footer a { color: rgba(242, 235, 223, 0.85); }
+footer a:hover { color: var(--copper-light); }
+.foot-legal {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid rgba(242, 235, 223, 0.12);
+  font-size: 11.5px;
+  font-style: italic;
+  font-family: var(--serif);
+  color: rgba(242, 235, 223, 0.5);
+  line-height: 1.7;
+}
+
+/* ---------- Responsive ---------- */
+@media (min-width: 768px) {
+  body { font-size: 17px; }
+  .minerals { grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .mineral { border-top: none; border-left: 1px solid var(--hairline); padding: 0 2rem; }
+  .mineral:first-child { border-left: none; }
+  .usage { grid-template-columns: repeat(3, 1fr); gap: 3rem; }
+  .offer-tiers { grid-template-columns: repeat(3, 1fr); }
+  .form-row.two { grid-template-columns: 1fr 1fr; }
+  .composition-frame { padding: 3rem 3rem; }
+  .form-card { padding: 3rem 3rem; }
+  .foot-grid { grid-template-columns: 2fr 1fr 1fr 1fr; }
+}
+
+@media (min-width: 1024px) {
+  section { padding: var(--space-2xl) 0; }
+  .chapter-head { margin-bottom: var(--space-xl); }
+}
+
+/* ---------- A11y ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--copper);
+  outline-offset: 3px;
+}
+</style>
+</head>
+<body>
+
+<!-- ====== Reusable SVG brand mark (inline definition) ====== -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="copperGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D9A878"/>
+      <stop offset="50%" stop-color="#B47A45"/>
+      <stop offset="100%" stop-color="#8C5524"/>
+    </linearGradient>
+    <symbol id="brandMark" viewBox="-140 -160 280 320">
+      <g>
+        <polygon points="0,-45 38.97,-67.5 38.97,-112.5 0,-135 -38.97,-112.5 -38.97,-67.5" fill="url(#copperGrad)" stroke="#6E3D17" stroke-width="1.5"/>
+        <polygon points="77.94,0 116.91,-22.5 116.91,-67.5 77.94,-90 38.97,-67.5 38.97,-22.5" fill="url(#copperGrad)" stroke="#6E3D17" stroke-width="1.5"/>
+        <polygon points="77.94,90 116.91,67.5 116.91,22.5 77.94,0 38.97,22.5 38.97,67.5" fill="url(#copperGrad)" stroke="#6E3D17" stroke-width="1.5"/>
+        <polygon points="0,135 38.97,112.5 38.97,67.5 0,45 -38.97,67.5 -38.97,112.5" fill="url(#copperGrad)" stroke="#6E3D17" stroke-width="1.5"/>
+        <polygon points="-77.94,90 -38.97,67.5 -38.97,22.5 -77.94,0 -116.91,22.5 -116.91,67.5" fill="url(#copperGrad)" stroke="#6E3D17" stroke-width="1.5"/>
+        <polygon points="-77.94,0 -38.97,-22.5 -38.97,-67.5 -77.94,-90 -116.91,-67.5 -116.91,-22.5" fill="url(#copperGrad)" stroke="#6E3D17" stroke-width="1.5"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ====== NAV ====== -->
+<nav aria-label="Главная навигация">
+  <div class="nav-inner">
+    <a href="#top" class="nav-brand" aria-label="Torion — на главную">
+      <svg aria-hidden="true"><use href="#brandMark"/></svg>
+      <span class="word">Torion</span>
+    </a>
+    <a href="#preorder" class="nav-cta">Забронировать</a>
+  </div>
+</nav>
+
+<main id="top">
+
+<!-- ====== HERO ====== -->
+<section class="hero" aria-labelledby="hero-title">
+  <svg class="hero-mark" aria-hidden="true"><use href="#brandMark"/></svg>
+  <h1 id="hero-title" class="hero-wordmark">Torion</h1>
+  <div class="hero-caption">Mineral · Matrix</div>
+  <p class="hero-proposition">Первый чистый кето-электролит России.</p>
+  <div class="hero-formula">
+    Натрий 1000<span>·</span>Калий 400<span>·</span>Магний 80
+  </div>
+  <a href="#problem" class="scroll-cue" aria-label="Прокрутить вниз">читать</a>
+</section>
+
+<!-- ====== I. PROBLEM ====== -->
+<section class="problem" id="problem" aria-labelledby="problem-title">
+  <div class="wrap-narrow">
+    <div class="chapter-head">
+      <span class="chapter-mark">I · Проблема</span>
+      <h2 id="problem-title">Кето-туман</h2>
+      <p class="lede">Не голод. Не усталость. Дефицит электролитов.</p>
+    </div>
+    <div class="problem-body">
+      <p>На второй день низкоуглеводного питания почки начинают активно выводить воду. Вместе с ней уходят минералы — натрий, калий, магний. Без них не работает ни мышца, ни нейрон.</p>
+      <p>Туман в голове, слабость в ногах, судороги ночью, сердце «выпрыгивает» на ровном месте — это не «адаптация». Это <em>электролитный дефицит</em>, который убирается за пятнадцать минут одним стиком.</p>
+      <p>Спортивные изотоники бесполезны: в них 10–20 мг натрия и 50 граммов сахара. Аптечный регидрон создан для диареи, не для жизни. Чистая вода вымывает остатки минералов и делает хуже.</p>
+      <p>Нужен другой инструмент.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ====== II. SOLUTION ====== -->
+<section aria-labelledby="solution-title">
+  <div class="wrap">
+    <div class="chapter-head">
+      <span class="chapter-mark">II · Решение</span>
+      <h2 id="solution-title">Три минерала. Точные дозы.</h2>
+      <p class="lede">Один стик закрывает суточный дефицит, возникающий на кето и интервальном голодании.</p>
+    </div>
+
+    <div class="minerals">
+      <div class="mineral">
+        <div class="mineral-symbol">Na</div>
+        <div class="mineral-name">Натрий</div>
+        <div class="mineral-dose">1000<span class="unit">мг</span></div>
+        <div class="mineral-rusp">из крымской морской соли</div>
+        <p class="mineral-rationale">Основной электролит внеклеточной жидкости. Удерживает воду, поддерживает давление, проводит нервный импульс.</p>
+      </div>
+      <div class="mineral">
+        <div class="mineral-symbol">K</div>
+        <div class="mineral-name">Калий</div>
+        <div class="mineral-dose">400<span class="unit">мг</span></div>
+        <div class="mineral-rusp">16 % суточной нормы</div>
+        <p class="mineral-rationale">Внутриклеточный антагонист натрия. Без него — судороги, аритмия, мышечная слабость. Цитрат: усваивается, не раздражает желудок.</p>
+      </div>
+      <div class="mineral">
+        <div class="mineral-symbol">Mg</div>
+        <div class="mineral-name">Магний</div>
+        <div class="mineral-dose">80<span class="unit">мг</span></div>
+        <div class="mineral-rusp">20 % суточной нормы · форма малата</div>
+        <p class="mineral-rationale">Малат входит в цикл Кребса — производство АТФ. Не оксид, не цитрат: форма выбрана за энергетический профиль.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== III. COMPOSITION ====== -->
+<section class="tight" aria-labelledby="comp-title">
+  <div class="wrap-narrow">
+    <div class="chapter-head">
+      <span class="chapter-mark">III · Состав</span>
+      <h2 id="comp-title">Полная прозрачность</h2>
+      <p class="lede">Пять ингредиентов. Каждый указан с весом. Ничего скрытого «премиксом».</p>
+    </div>
+
+    <div class="composition-frame">
+      <div class="composition-title">формула v1.1 · один стик 5 г</div>
+      <div class="composition-subtitle">в каждой коробке 30 стиков</div>
+
+      <ul class="composition-list">
+        <li>
+          <span class="ing-name">Соль морская крымская, помол №0<em>натрий 1000 мг</em></span>
+          <span class="ing-amount">2,55 г</span>
+        </li>
+        <li>
+          <span class="ing-name">Цитрат калия (E332)<em>калий 400 мг — 16 % РУСП</em></span>
+          <span class="ing-amount">1,05 г</span>
+        </li>
+        <li>
+          <span class="ing-name">Магния малат<em>магний 80 мг — 20 % РУСП</em></span>
+          <span class="ing-amount">0,52 г</span>
+        </li>
+        <li>
+          <span class="ing-name">Сублимированный сок лимона<em>натуральный вкус и витамин С</em></span>
+          <span class="ing-amount">0,65 г</span>
+        </li>
+        <li>
+          <span class="ing-name">Лимонная кислота (E330)<em>регулятор кислотности</em></span>
+          <span class="ing-amount">0,23 г</span>
+        </li>
+      </ul>
+
+      <div class="composition-negatives">
+        <div class="label">что мы сюда не положили</div>
+        <div class="items">
+          <span>сахар</span>
+          <span>стевию</span>
+          <span>сукралозу</span>
+          <span>ароматизаторы</span>
+          <span>красители</span>
+          <span>цинк</span>
+          <span>хром</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== IV. COMPARISON ====== -->
+<section class="problem" aria-labelledby="compare-title">
+  <div class="wrap">
+    <div class="chapter-head">
+      <span class="chapter-mark">IV · Сравнение</span>
+      <h2 id="compare-title">Чем Torion отличается</h2>
+      <p class="lede">Все цифры — с официальных составов производителей.</p>
+    </div>
+
+    <div class="compare">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th class="us">Torion</th>
+            <th>LMNT</th>
+            <th>Maxler</th>
+            <th>WAVE</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Натрий, мг</td><td class="us">1000</td><td>1000</td><td>~10</td><td>—</td></tr>
+          <tr><td>Калий, мг</td><td class="us">400</td><td>200</td><td>~50</td><td>—</td></tr>
+          <tr><td>Магний, мг</td><td class="us">80 (малат)</td><td>60 (цитрат)</td><td>~10</td><td>—</td></tr>
+          <tr><td>Без подсластителей</td><td class="us"><span class="check">✓</span></td><td><span class="cross">—</span></td><td><span class="cross">—</span></td><td><span class="cross">—</span></td></tr>
+          <tr><td>Полный состав открыт</td><td class="us"><span class="check">✓</span></td><td><span class="check">✓</span></td><td><span class="cross">—</span></td><td><span class="cross">—</span></td></tr>
+          <tr><td>Продаётся в РФ</td><td class="us"><span class="check">✓</span></td><td><span class="cross">—</span></td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare-note">Maxler позиционируется как спортивная добавка, не предназначен для кето. WAVE — российский аналог по формату, состав в открытом доступе не публикуется.</p>
+  </div>
+</section>
+
+<!-- ====== V. USAGE ====== -->
+<section aria-labelledby="usage-title">
+  <div class="wrap">
+    <div class="chapter-head">
+      <span class="chapter-mark">V · Применение</span>
+      <h2 id="usage-title">Как принимать</h2>
+      <p class="lede">Никакой сложности. Один стик, 300–500 мл воды, перемешать.</p>
+    </div>
+
+    <div class="usage">
+      <div class="usage-step">
+        <div class="num">1</div>
+        <h4>Утро</h4>
+        <p>Натощак или после первой воды. Особенно в первые две недели на кето — когда уход воды максимальный.</p>
+      </div>
+      <div class="usage-step">
+        <div class="num">2</div>
+        <h4>Перед нагрузкой</h4>
+        <p>За 20–30 минут до тренировки, длинной прогулки, бани, перелёта. Любая ситуация с потоотделением — повод.</p>
+      </div>
+      <div class="usage-step">
+        <div class="num">3</div>
+        <h4>По симптому</h4>
+        <p>Туман, головная боль, судорога, «качание» при вставании. Стик закрывает дефицит за 15–20 минут.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== VI. FOUNDER ====== -->
+<section class="founder" aria-labelledby="founder-title">
+  <div class="wrap-narrow">
+    <div class="chapter-head">
+      <span class="chapter-mark">VI · Основатель</span>
+      <h2 id="founder-title">Зачем я это делаю</h2>
+    </div>
+    <div class="founder-body">
+      <p>Меня зовут Александр Таймаскин. Я пришёл к здоровому питанию через простую, честную основу: мясо, качественные жиры и зелёные овощи. Такой рацион быстро показывает главное: энергия, ясность и устойчивость зависят не только от того, что мы убрали из питания, но и от того, что организм получает каждый день.</p>
+      <p>Самым неожиданным открытием стал рынок электролитов в России. Я искал чистую смесь — без сахара, без подсластителей, без ароматизаторов, без «спортивного» вкуса и лишних добавок. Но вместо простого продукта находил либо изотоники с маркетингом, либо аптечные растворы не для ежедневного применения, либо сложные формулы, где минеральная логика терялась за добавками.</p>
+      <p>Так появился Tarion: электролитная смесь нового типа для людей, которые выбирают низкоуглеводное, кето- или просто осознанное питание. Внутри — только функциональная минеральная основа: натрий, калий и магний в понятных дозировках. Никакой вкусовой маскировки. Никакого сахара. Никакой лишней «магии».</p>
+      <p>Для меня Tarion — это не БАД и не обещание чудес. Это честный пищевой продукт, созданный по принципу лучших мировых wellness-брендов: радикальная прозрачность состава, минимализм формулы, уважение к телу и понятная ежедневная польза.</p>
+      <p>По вопросам сотрудничества, производства, пресейла и обратной связи можно написать напрямую: <a href="mailto:info@torion.su">info@torion.su</a>.</p>
+    </div>
+    <div class="founder-sign">— Александр Таймаскин, основатель Tarion</div>
+  </div>
+</section>
+
+<!-- ====== OFFER ====== -->
+<section class="offer" aria-labelledby="offer-title">
+  <div class="wrap">
+    <div class="chapter-head">
+      <span class="chapter-mark">VII · Оффер</span>
+      <h2 id="offer-title">Пресейл первой партии</h2>
+      <p class="lede">До запуска производства — цена ниже розничной на 30 %. Поставка ориентировочно через 8–10 недель после закрытия пресейла.</p>
+    </div>
+
+    <div class="offer-tiers">
+      <div class="tier">
+        <div class="tier-name">Розница</div>
+        <div class="tier-sub">после запуска</div>
+        <div class="tier-price">2 400<span class="currency">₽</span></div>
+        <div class="tier-note">за коробку 30 стиков<br>~80 ₽ за приём</div>
+      </div>
+      <div class="tier featured">
+        <span class="tier-tag">пресейл</span>
+        <div class="tier-name">Сейчас</div>
+        <div class="tier-sub">фиксируем цену</div>
+        <div class="tier-price">1 690<span class="currency">₽</span></div>
+        <div class="tier-old">2 400 ₽</div>
+        <div class="tier-note">за коробку 30 стиков<br>~56 ₽ за приём</div>
+      </div>
+      <div class="tier">
+        <div class="tier-name">Подписка</div>
+        <div class="tier-sub">каждый месяц</div>
+        <div class="tier-price">1 990<span class="currency">₽</span></div>
+        <div class="tier-note">регулярная цена<br>отмена в любой момент</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PREORDER FORM ====== -->
+<section class="form-section" id="preorder" aria-labelledby="form-title">
+  <div class="wrap">
+    <div class="chapter-head">
+      <span class="chapter-mark">VIII · Бронирование</span>
+      <h2 id="form-title">Зафиксировать цену пресейла</h2>
+      <p class="lede">Оплата не сейчас. Сначала мы пишем вам в течение суток, подтверждаем заказ и условия доставки.</p>
+    </div>
+
+    <form class="form-card" id="preorderForm" novalidate>
+      <div class="form-row">
+        <label for="f-name">Имя</label>
+        <input type="text" id="f-name" name="name" autocomplete="given-name" required minlength="2" maxlength="60" placeholder="Михаил">
+      </div>
+
+      <div class="form-row two">
+        <div>
+          <label for="f-phone">Телефон</label>
+          <input type="tel" id="f-phone" name="phone" autocomplete="tel" required placeholder="+7 999 000 00 00" maxlength="20">
+        </div>
+        <div>
+          <label for="f-email">Email</label>
+          <input type="email" id="f-email" name="email" autocomplete="email" required placeholder="you@example.ru" maxlength="80">
+        </div>
+      </div>
+
+      <div class="form-row two">
+        <div>
+          <label for="f-city">Город</label>
+          <input type="text" id="f-city" name="city" autocomplete="address-level2" required placeholder="Москва" maxlength="60">
+        </div>
+        <div>
+          <label for="f-qty">Количество коробок</label>
+          <select id="f-qty" name="quantity" required>
+            <option value="1">1 коробка — 1 690 ₽</option>
+            <option value="2">2 коробки — 3 380 ₽</option>
+            <option value="3" selected>3 коробки — 5 070 ₽</option>
+            <option value="6">6 коробок — 10 140 ₽</option>
+            <option value="12">12 коробок — 20 280 ₽</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- honeypot anti-spam -->
+      <input type="text" name="company" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" aria-hidden="true">
+
+      <button type="submit" class="btn" id="submitBtn">Забронировать</button>
+
+      <div class="form-legal">
+        Нажимая кнопку, вы соглашаетесь с обработкой персональных данных в целях обратной связи. Спам не присылаем.
+      </div>
+
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+
+<!-- ====== LEGAL CTA ====== -->
+<section class="legal-cta tight" aria-labelledby="legal-title">
+  <div class="wrap">
+    <div class="chapter-head">
+      <span class="chapter-mark">IX · Юридически</span>
+      <h2 id="legal-title">Прозрачные условия</h2>
+      <p class="lede">Перед бронированием можно отдельно посмотреть, как обрабатываются персональные данные и на каких условиях оформляется предзаказ.</p>
+    </div>
+    <div class="legal-cards">
+      <a class="legal-card" href="privacy.html">
+        <div class="legal-title">Политика обработки персональных данных</div>
+        <div class="legal-text">Что именно собирает форма бронирования, зачем нужны имя, телефон, email и город, как долго данные хранятся и как запросить удаление.</div>
+      </a>
+      <a class="legal-card" href="offer.html">
+        <div class="legal-title">Публичная оферта</div>
+        <div class="legal-text">Условия пресейла, порядок подтверждения заявки, сроки производства, возвраты, доставка и ограничения по продукту.</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FAQ ====== -->
+<section class="tight" aria-labelledby="faq-title">
+  <div class="wrap-narrow">
+    <div class="chapter-head">
+      <span class="chapter-mark">X · Вопросы</span>
+      <h2 id="faq-title">Частое</h2>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-q">Это БАД?</summary>
+        <div class="faq-a">Нет. Torion зарегистрирован как пищевой концентрат по Декларации соответствия ТР ТС 022/2011, 021/2011, 029/2012. Это пищевой продукт, не биологически активная добавка и не лекарство.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Когда я получу заказ?</summary>
+        <div class="faq-a">Производство запускается после закрытия пресейла. Ориентировочный срок поставки — 8–10 недель. Точную дату сообщим письмом сразу после старта производства. Если задерживаемся — вернём полную сумму.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Почему так мало магния — всего 80 мг?</summary>
+        <div class="faq-a">80 мг — это 20 % суточной нормы взрослого человека в одном стике. При приёме раз в день — комфортная доза, не вызывает желудочного дискомфорта. Большие однократные дозы магния (300+ мг) чаще всего проходят через ЖКТ транзитом и работают как мягкое слабительное.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Подходит ли при гипертонии?</summary>
+        <div class="faq-a">В Torion 1000 мг натрия — это треть суточной нормы. При диагностированной артериальной гипертензии, заболеваниях почек или приёме мочегонных — обязательно проконсультируйтесь с врачом перед приёмом. Это не лекарство, не лечит и не профилактирует никаких заболеваний.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Можно ли принимать при беременности и кормлении?</summary>
+        <div class="faq-a">Состав безопасен и состоит из обычных пищевых ингредиентов, но при беременности и лактации мы рекомендуем согласовать любые электролитные смеси с врачом, ведущим вашу беременность.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Как платить?</summary>
+        <div class="faq-a">На этапе пресейла оплата не сразу. Сначала мы свяжемся с вами по телефону или почте, подтвердим заказ, расскажем про доставку в ваш город. Оплата будет принята через эквайринг Robokassa после подтверждения.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Откуда соль и сырьё?</summary>
+        <div class="faq-a">Соль — крымская морская, помол №0, российский поставщик. Цитрат калия, малат магния, лимонная кислота — пищевые ингредиенты от сертифицированных поставщиков с действующими сертификатами соответствия ЕАЭС.</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">Почему без подсластителей?</summary>
+        <div class="faq-a">Вкус Torion — солёно-кислый, как разбавленный лимонный сок с морской солью. Это вкус электролита, а не лимонада. Подсластители (включая стевию) маскируют состав, провоцируют инсулиновый ответ у части людей и не нужны для функции продукта.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">
+          <svg aria-hidden="true"><use href="#brandMark"/></svg>
+          <span class="word">Torion</span>
+        </div>
+        <div>Mineral Matrix · кето-электролитный концентрат · стик-формат</div>
+      </div>
+      <div>
+        <div class="foot-h">Связь</div>
+        <a href="mailto:info@torion.su">info@torion.su</a><br>
+        <a href="https://t.me/Zdorov.life" rel="me noopener" target="_blank">Telegram-канал Zdorov.life</a>
+      </div>
+      <div>
+        <div class="foot-h">Продукт</div>
+        <a href="#problem">Проблема</a><br>
+        <a href="#preorder">Пресейл</a>
+      </div>
+      <div>
+        <div class="foot-h">Юридически</div>
+        <div class="foot-links"><a class="legal-pill" href="privacy.html" id="privacy-link">Политика данных</a><br>
+        <a class="legal-pill" href="offer.html" id="offer-link">Публичная оферта</a></div>
+      </div>
+    </div>
+
+    <div class="foot-legal">
+      © 2026 Torion · Концентрат пищевой минеральный. Не БАД, не лекарственное средство. Не предназначен для диагностики, лечения или профилактики заболеваний. Имеются противопоказания — при заболеваниях почек, сердечно-сосудистой системы и артериальной гипертензии перед приёмом проконсультируйтесь с врачом. Декларация соответствия ТР ТС 022/2011, 021/2011, 029/2012 будет опубликована после получения. Реквизиты юридического лица обновим перед стартом продаж.
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+
+  const form = document.getElementById('preorderForm');
+  const status = document.getElementById('formStatus');
+  const btn = document.getElementById('submitBtn');
+
+  // Phone formatting helper (Russian)
+  const phoneInput = document.getElementById('f-phone');
+  phoneInput.addEventListener('input', function(e) {
+    let v = e.target.value.replace(/\D/g, '');
+    if (v.startsWith('8')) v = '7' + v.slice(1);
+    if (!v.startsWith('7') && v.length > 0) v = '7' + v;
+    v = v.slice(0, 11);
+    let formatted = '';
+    if (v.length > 0) formatted = '+7';
+    if (v.length > 1) formatted += ' ' + v.slice(1, 4);
+    if (v.length > 4) formatted += ' ' + v.slice(4, 7);
+    if (v.length > 7) formatted += ' ' + v.slice(7, 9);
+    if (v.length > 9) formatted += ' ' + v.slice(9, 11);
+    e.target.value = formatted;
+  });
+
+  function showStatus(msg, type) {
+    status.textContent = msg;
+    status.className = 'form-status ' + type;
+  }
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    // Honeypot
+    if (form.company.value) return;
+
+    // Basic validation
+    const data = {
+      name: form.name.value.trim(),
+      phone: form.phone.value.trim(),
+      email: form.email.value.trim(),
+      city: form.city.value.trim(),
+      quantity: form.quantity.value,
+      source: window.location.href,
+      ts: new Date().toISOString()
+    };
+
+    if (!data.name || data.name.length < 2) { showStatus('Укажите, как к вам обращаться.', 'err'); return; }
+    if (!/^\+7\s?\d{3}\s?\d{3}\s?\d{2}\s?\d{2}$/.test(data.phone)) { showStatus('Проверьте формат телефона: +7 999 000 00 00.', 'err'); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(data.email)) { showStatus('Проверьте адрес почты.', 'err'); return; }
+    if (!data.city) { showStatus('Укажите город — нам нужно понять логистику.', 'err'); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Отправляем…';
+
+    try {
+      const resp = await fetch('/api/preorder', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      const result = await resp.json().catch(() => ({}));
+      if (resp.ok) {
+        showStatus('Готово. Бронь зафиксирована — мы свяжемся с вами в течение суток.', 'ok');
+        form.reset();
+        btn.textContent = 'Отправлено';
+        // basic GA / metric hook
+        if (window.ym) try { window.ym(window.ymCounter, 'reachGoal', 'preorder'); } catch(_) {}
+      } else {
+        throw new Error(result.error || 'server');
+      }
+    } catch (err) {
+      showStatus('Не удалось отправить заявку через /api/preorder. Напишите нам на info@torion.su — мы зафиксируем бронь вручную.', 'err');
+      btn.disabled = false;
+      btn.textContent = 'Забронировать';
+    }
+  });
+})();
+</script>
+
+</body>
+</html>
